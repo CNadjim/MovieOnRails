@@ -1,0 +1,14 @@
+language: ruby
+cache:
+- bundler
+before_script:
+- bundle exec rake db:create
+- bundle exec rake db:migrate
+- bundle exec rake assets:precompile
+deploy:
+  provider: heroku
+  api_key:
+    secure: iml/h1qvifm3yPGN+4odnyKl/8Ws0kAtYdJR936rLwypyTmu3nhr8eUhUyGdXIClchGVfvak0OR5e+vd/8VQqfQ6xzmV7F3XZ2wb8EWOo4P8vrr6pI2Dw/DMfudWnClnTQQ8Y4piEhnKvMXQt4voXbRHEisGhbYDhTHTkk203oi/B7f2mb0IzYKIcRe/gGkPUwNG6B/HD65o4ig/pFi9kcO5ksK2FjXdCNxDt8LaIl3ERyrfknfOgyizBuHw8picn2Fsl4jjpdbdmYeJiK7khTZ+EPBcn+njPQTnBuglDvhvnsue8eqgkSkLuOOSzZw/KbSw3LtIuBaIE+cfMHhXxsiMj5L6i6QFB8GBVsT5kLnp0EnpzOpTuArRRwh5N2w9ovffwTJTXp5hoQrLH+GP1UeGeiaRgAc4Wvsa8/O/5DY5qs6U663veMWkhUH80398AykqC/CFpIWGkX05IMpaYF18FEOCn7AWT6EaG9U8UQ3DRbvACYTTv81WZjlosT58gWBmRZY5ckhRB8MpHwKaTEX+7ePqHuDRcORtFdRg2Xgg/zjexhAag1tRFSMugqwZnprC1avHtNkTt5A7y1CB9QoFMmrDokjbHlFmw/G4mzsp8iF/XJ/ycJJxDtZqyNkmxTYXbKxc7N3j1P1g0HLoaQVCdim5Vb/en6EIJKZBVt4=
+  app: movie-on-rails-esgi
+  on:
+    repo: CNadjim/MovieOnRails
