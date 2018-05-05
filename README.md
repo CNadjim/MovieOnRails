@@ -26,3 +26,5 @@ $ rails s
 - https://www.themoviedb.org/documentation/api
 - https://medium.com/@felipeluizsoares/automatically-deploy-with-travis-ci-and-heroku-ddba1361647f
 - https://openclassrooms.com/courses/initiez-vous-a-ruby-on-rails
+- https://stackoverflow.com/questions/42980593/read-data-from-external-api-every-10-seconds
+- https://rails-assets.org

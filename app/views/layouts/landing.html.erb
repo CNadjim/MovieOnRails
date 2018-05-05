@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MovieOnRails</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body class="pushable">
+  <%= render "layouts/header" %>
+  <%= yield %>
+  <%= render "layouts/footer" %>
+
+  <script>
+      $(document)
+          .ready(function() {
+
+              // fix menu when passed
+              $('.masthead')
+                  .visibility({
+                      once: false,
+                      onBottomPassed: function() {
+                          $('.fixed.menu').transition('fade in');
+                      },
+                      onBottomPassedReverse: function() {
+                          $('.fixed.menu').transition('fade out');
+                      }
+                  })
+              ;
+
+              // create sidebar and attach to menu open
+              $('.ui.sidebar')
+                  .sidebar('attach events', '.toc.item')
+              ;
+
+          })
+      ;
+  </script>
+</body>
+</html>
+
+
+

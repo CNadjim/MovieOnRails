@@ -1,3 +1,99 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.hidden.menu {
+  display: none;
+}
+.landing{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.search-item{
+  margin-top: 40px;
+}
+.landing .text{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.landing.segment {
+  min-height: 700px;
+  padding: 1em 0em;
+}
+.landing .logo.item img {
+  margin-right: 1em;
+}
+.landing .ui.menu .ui.button {
+  margin-left: 0.5em;
+}
+.landing h1.ui.header {
+  margin: 0 !important;
+  font-size: 4em;
+  font-weight: normal;
+}
+.landing h2 {
+  font-size: 1.7em;
+  font-weight: normal;
+}
+
+.ui.vertical.stripe {
+  padding: 8em 0em;
+}
+.ui.vertical.stripe h3 {
+  font-size: 2em;
+}
+.ui.vertical.stripe .button + h3,
+.ui.vertical.stripe p + h3 {
+  margin-top: 3em;
+}
+.ui.vertical.stripe .floated.image {
+  clear: both;
+}
+.ui.vertical.stripe p {
+  font-size: 1.33em;
+}
+.ui.vertical.stripe .horizontal.divider {
+  margin: 3em 0em;
+}
+
+.quote.stripe.segment {
+  padding: 0em;
+}
+.quote.stripe.segment .grid .column {
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+
+.footer.segment {
+  padding: 5em 0em;
+}
+
+.secondary.pointing.menu .toc.item {
+  display: none;
+}
+
+@media only screen and (max-width: 700px) {
+  .ui.fixed.menu {
+    display: none !important;
+  }
+  .secondary.pointing.menu .item,
+  .secondary.pointing.menu .menu {
+    display: none;
+  }
+  .secondary.pointing.menu .toc.item {
+    display: block;
+  }
+  .landing.segment {
+    min-height: 350px;
+  }
+  .landing h1.ui.header {
+    font-size: 2em;
+    margin-top: 1.5em;
+  }
+  .landing h2 {
+    margin-top: 0.5em;
+    font-size: 1.5em;
+  }
+}

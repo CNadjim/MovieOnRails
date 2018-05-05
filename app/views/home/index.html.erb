@@ -1,2 +1,49 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<!-- Page Contents -->
+<div class="pusher">
+  <div class="ui inverted vertical center aligned segment landing">
+
+    <div class="ui container masthead">
+      <div class="ui large secondary inverted pointing menu">
+        <a class="toc item">
+          <i class="sidebar icon"></i>
+        </a>
+        <a class="active item">Home</a>
+        <a class="item">Films</a>
+        <a class="item">Séries</a>
+        <a class="item">Contact</a>
+        <div class="right item">
+          <a class="ui inverted button">Log in</a>
+          <a class="ui inverted button">Sign Up</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui text container">
+      <div class="item">
+        <h1 class="ui inverted header">MovieOnRails</h1>
+        <h2>Do whatever you want when you want to.</h2>
+      </div>
+      <div class="item search-item">
+        <div class="ui action left icon input">
+          <i class="search icon"></i>
+          <input type="text" placeholder="Search">
+          <button class="ui button">Submit</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ui vertical stripe segment">
+    <div class="ui middle aligned stackable grid container">
+      <div class="row">
+        <div class="center aligned column">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
