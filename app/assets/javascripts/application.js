@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require swiper
 //= require semantic
 //= require rails-ujs
 //= require turbolinks

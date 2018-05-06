@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require semantic
+ *= require swiper
  *= require_tree .
  *= require_self
  */
