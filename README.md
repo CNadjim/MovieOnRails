@@ -28,3 +28,10 @@ $ rails s
 - https://openclassrooms.com/courses/initiez-vous-a-ruby-on-rails
 - https://stackoverflow.com/questions/42980593/read-data-from-external-api-every-10-seconds
 - https://rails-assets.org
+
+### TMDB API
+API KEY : `3942737097dcd29145fe000304ac2294`
+
+Exemple de requête API : `https://api.themoviedb.org/3/movie/550?api_key=3942737097dcd29145fe000304ac2294`
+
+API DOC : https://developers.themoviedb.org/3/movies/get-popular-movies
