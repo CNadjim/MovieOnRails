@@ -22,6 +22,13 @@ $ rails s
 ```
 
 ### Useful Links 
+```
+API KEY : 3942737097dcd29145fe000304ac2294
+```
+
+```
+http://image.tmdb.org/t/p/original/ + imgUrl
+```
 
 - https://www.themoviedb.org/documentation/api
 - https://medium.com/@felipeluizsoares/automatically-deploy-with-travis-ci-and-heroku-ddba1361647f
