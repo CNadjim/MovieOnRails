@@ -33,7 +33,7 @@
       <div class="swiper-wrapper">
         <% @movies.each do |movie| %>
           <div class="swiper-slide">
-            <a href="#" class="vignette" style="background-image: url('<%= movie.poster_path %>')"></a>
+            <a href="/movies/<%= movie.id %>" class="vignette" style="background-image: url('<%= movie.poster_path %>')"></a>
           </div>
         <% end %>
       </div>

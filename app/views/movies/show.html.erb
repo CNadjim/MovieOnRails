@@ -1,23 +1,21 @@
 <div class="row">
   <div class="ui cards">
-    <% @movies.each do |movie| %>
       <div class="card">
-        <div class="poster" style="background-image: url('<%= movie.poster_path %>')">
+        <div class="poster" style="background-image: url('<%= @movie.poster_path %>')">
         </div>
         <div class="content">
-          <div class="header"><%= movie.title%></div>
+          <div class="header"><%= @movie.title%></div>
           <div class="meta">
-            <% movie.genres.each do |genre| %>
+            <% @movie.genres.each do |genre| %>
               <div class="ui label">
                 <%= genre.name%>
               </div>
             <% end %>
           </div>
           <div class="description">
-            <%= movie.overview%>
+            <%= @movie.overview%>
           </div>
         </div>
       </div>
-    <% end %>
   </div>
 </div>

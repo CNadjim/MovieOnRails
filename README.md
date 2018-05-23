@@ -18,9 +18,41 @@ Ensure you have this installed before proceeding further
 http://localhost:3000
 ```
 $ bundle
+$ rails db:migrate RAILS_ENV=development
 $ rails s
 ```
+### Rails code
+Heroku migrate
+```
+heroku run rake db:migrate
+```
+Local reset db
+```
+rake db:reset db:migrate
+```
+Create migration & migrate
+```
+rails generate migration migrationName
+rails db:migrate
+```
+Generate model
+```
+rails generate model Type name:string color:string --skip-test-framework
+rails db:migrate
+```
 
+Generate Scaffold
+```
+rails generate scaffold Type name:string color:string --skip --skip-test-framework --skip-assets
+rails db:migrate
+```
+
+Add reference
+```
+rails g migration addTypePokemon2 type:references
+
+In MODEL : add_reference :pokemons, :type, foreign_key:true
+```
 ### Useful Links 
 ```
 API KEY : 3942737097dcd29145fe000304ac2294

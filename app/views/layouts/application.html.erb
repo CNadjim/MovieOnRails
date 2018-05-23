@@ -6,11 +6,31 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Standard Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   </head>
 
-  <body>
-    <%= render "layouts/header" %>
-    <%= yield %>
+  <body class="">
+    <div class="ui main text container">
+      <%= yield %>
+    </div>
     <%= render "layouts/footer" %>
+
+  <script>
+      $(document)
+          .ready(function() {
+
+
+              // create sidebar and attach to menu open
+              $('.ui.sidebar')
+                  .sidebar('attach events', '.toc.item')
+              ;
+
+          })
+      ;
+  </script>
   </body>
 </html>
