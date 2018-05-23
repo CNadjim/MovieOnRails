@@ -1,8 +1,9 @@
-<div class="row">
+<div class="row" style="margin: 10px 0px">
   <div class="ui cards">
     <% @movies.each do |movie| %>
-      <div class="card">
-        <div class="poster" style="background-image: url('<%= movie.poster_path %>')">
+      <a href="/movies/<%= movie.id %>" class="raised card">
+        <div>
+          <div class="poster" style="background-image: url('<%= movie.poster_path %>')"></div>
         </div>
         <div class="content">
           <div class="header"><%= movie.title%></div>
@@ -17,7 +18,7 @@
             <%= movie.overview%>
           </div>
         </div>
-      </div>
+      </a>
     <% end %>
   </div>
 </div>
