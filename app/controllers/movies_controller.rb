@@ -3,10 +3,14 @@ class MoviesController < ApplicationController
   BASE_URL = "https://api.themoviedb.org/3/movie/popular?api_key=3942737097dcd29145fe000304ac2294&language=fr-FR&region=FRA&page=1"
   before_action :set_movie,only: ['show','edit','update','destroy']
 
-  def updateDB
-    getGenresFromApi
+  def updateMovies
     getMoviesFromApi(1)
     redirect_to movies_path
+  end
+
+  def updateGenres
+    getGenresFromApi
+    redirect_to "/"
   end
 
   def index

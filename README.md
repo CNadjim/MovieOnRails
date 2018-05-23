@@ -21,6 +21,9 @@ $ bundle
 $ rails db:migrate RAILS_ENV=development
 $ rails s
 ```
+And launch browser to endpoints :
+- http://localhost:3000/update/genres
+- http://localhost:3000/update/movies
 ### Rails code
 Heroku migrate
 ```
