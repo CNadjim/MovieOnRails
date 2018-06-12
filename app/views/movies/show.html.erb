@@ -1,21 +1,21 @@
-<div class="row" style="margin: 10px 0">
-  <div class="ui cards">
-      <div class="card">
-        <div class="poster" style="background-image: url('<%= @movie.poster_path %>')">
-        </div>
-        <div class="content">
-          <div class="header"><%= @movie.title%></div>
-          <div class="meta">
-            <% @movie.genres.each do |genre| %>
-              <div class="ui label">
-                <%= genre.name%>
-              </div>
-            <% end %>
-          </div>
-          <div class="description">
-            <%= @movie.overview%>
-          </div>
-        </div>
+<div class="ui items">
+  <div class="item">
+    <a class="ui image">
+      <img src="<%= @movie.poster_path %>" style="width: 300px; height: 450px">
+    </a>
+    <div class="content">
+      <h1 class="ui header">
+        <%= @movie.title%>
+        <div class="sub header"><%= @movie.original_title %></div>
+      </h1>
+      <div class="description">
+        <a class="ui violet label"> <%= @movie.vote_average %>0<sup>%</sup> </a>
+        <div class="ui label">Votes <div class="detail"><%= @movie.vote_count %></div></div>
+        <h3 class="ui disabled header">
+          Synopsis
+        </h3>
+        <p><%= @movie.overview%></p>
       </div>
+    </div>
   </div>
 </div>
