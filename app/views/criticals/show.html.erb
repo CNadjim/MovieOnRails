@@ -1,0 +1,47 @@
+<div class="my-3 my-md-5">
+<div class="map-header customHeader">
+  <div class="map-header-layer" style="background-image: url(<%= @critical.movie.backdrop_path %>)">
+  </div>
+</div>
+<div class="container">
+    <div class="page-header">
+      <h1 class="page-title">
+        Critique du film <span><%= link_to @critical.movie.title, @critical.movie, method: :get %></span>
+      </h1>
+    </div>
+    <div class="row">
+
+
+      <div class="col-lg-4">
+
+        <div class="card card-profile">
+          <div class="card-header" style="background-image: url(https://tabler.github.io/tabler/demo/photos/eberhard-grossgasteiger-311213-500.jpg);"></div>
+          <div class="card-body text-center">
+            <img class="card-profile-img" src="https://tabler.github.io/tabler/demo/faces/male/16.jpg">
+            <h3 class="mb-3"><%= @critical.user.email%></h3>
+            <p class="mb-4">
+              Big belly rude boy, million dollar hustler. Unemployed.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><%= @critical.title%></h3>
+          <div class="card-options">
+            <small class="d-block text-muted"><%= @critical.date %></small>
+          </div>
+        </div>
+        <div class="card-body">
+          <%= @critical.text%>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+
+</div>

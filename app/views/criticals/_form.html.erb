@@ -1,0 +1,42 @@
+<%= form_with(model: critical, local: true) do |form| %>
+  <% if critical.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(critical.errors.count, "error") %> prohibited this critical from being saved:</h2>
+
+      <ul>
+      <% critical.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :critical_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :text %>
+    <%= form.text_area :text, id: :critical_text %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date, id: :critical_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :critical_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :movie_id %>
+    <%= form.text_field :movie_id, id: :critical_movie_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

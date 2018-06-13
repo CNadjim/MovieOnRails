@@ -20,7 +20,8 @@ end
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-gem 'rails-assets-semantic', source: 'https://rails-assets.org'
+gem 'bootstrap', '~> 4.1.1'
+gem 'tabler-rubygem'
 gem 'rails-assets-swiper', source: 'https://rails-assets.org'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -47,6 +48,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'popper_js', '>= 1.12.3'
 end
 
 group :development do
@@ -62,3 +64,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'httparty'
+gem 'devise'
+gem 'simple_form'

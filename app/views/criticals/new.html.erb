@@ -1,0 +1,92 @@
+<div class="my-3 my-md-5">
+  <div class="map-header customHeader">
+    <div class="map-header-layer" style="background-image: url(<%= @critical.movie.backdrop_path %>)">
+    </div>
+  </div>
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-title">
+        Critique du film <span><%= link_to @critical.movie.title, @critical.movie, method: :get %></span>
+      </h1>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-8  col-sm-12 m-auto">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Film information</h3>
+          </div>
+          <div class="card-body">
+            <div class="media mb-5">
+              <img class="d-flex mr-5 rounded w-50" src="<%= @critical.movie.poster_path%>" alt="Generic placeholder image">
+              <div class="media-body">
+                <h5><%= @critical.movie.title%> </h5>
+                <h6 class="text-muted"><%=@critical.movie.release_date.strftime("%d/%m/%Y")%></h6>
+                <div class="text-muted small">
+                  Original title : <%= @critical.movie.original_title%>
+                </div>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="h6">Budget</div>
+                <p><%= @critical.movie.budget%> $</p>
+              </div>
+              <div class="col-6">
+                <div class="h6">Revenue</div>
+                <p><%= @critical.movie.revenue %> $</p>
+              </div>
+              <div class="col-6">
+                <div class="h6">Durée</div>
+                <p><%= @critical.movie.runtime%> min</p>
+              </div>
+              <div class="col-6">
+                <div class="h6">Note Moyenne</div>
+                <p><%= @critical.movie.vote_average%> / 10</p>
+              </div>
+            </div>
+            <div class="h5">Description</div>
+            <p><%= @critical.movie.overview%></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Composer une nouvelle critique</h3>
+          </div>
+          <div class="card-body">
+            <%= form_with(model: @critical, local: true) do |form| %>
+              <div class="form-group">
+                <div class="row align-items-center">
+                  <label class="col-sm-2">Film:</label>
+                  <div class="col-sm-10">
+                    <%= form.hidden_field :movie_id, id: :critical_movie_id %>
+                    <input type="text" class="form-control" disabled value="<%= @critical.movie.title%>">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row align-items-center">
+                  <label class="col-sm-2">Titre:</label>
+                  <div class="col-sm-10">
+                    <%= form.text_field :title, id: :critical_title,class:"form-control" ,:required => true%>
+
+                  </div>
+                </div>
+              </div>
+
+              <%= form.text_area :text, id: :critical_text, class:"form-control",rows:"10" ,:required => true%>
+              <div class="btn-list mt-4 text-right">
+                <button type="reset" class="btn btn-secondary btn-space">Annuler</button>
+
+                <%= form.submit 'Poster cette critique',class:"btn btn-primary btn-space"%>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

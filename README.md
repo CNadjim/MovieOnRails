@@ -56,6 +56,23 @@ rails g migration addTypePokemon2 type:references
 
 In MODEL : add_reference :pokemons, :type, foreign_key:true
 ```
+Add Model
+```
+rails g model PokemonMove pokemon:references move:references --skip-test-framework
+```
+Devise
+```
+gem 'devise'
+gem 'devise-i18n'
+bundle exec rails generate devise:install
+bundle exec rails  generate devise User
+bundle exec rails db:migrate
+bundle exec rails generate devise:i18n:views
+```
+Drop db
+```
+rake db:drop db:create db:migrate
+```
 ### Useful Links 
 ```
 API KEY : 3942737097dcd29145fe000304ac2294

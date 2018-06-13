@@ -13,24 +13,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   </head>
 
-  <body class="">
-    <div class="ui main text container" style="flex-grow: 1">
-      <%= yield %>
+  <body>
+    <div class="page">
+      <%= render "layouts/header" %>
+      <div class="main">
+        <%= yield %>
+      </div>
+      <%= render "layouts/footer" %>
     </div>
-    <%= render "layouts/footer" %>
-
-  <script>
-      $(document)
-          .ready(function() {
-
-
-              // create sidebar and attach to menu open
-              $('.ui.sidebar')
-                  .sidebar('attach events', '.toc.item')
-              ;
-
-          })
-      ;
-  </script>
   </body>
 </html>

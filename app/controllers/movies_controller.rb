@@ -2,15 +2,17 @@ class MoviesController < ApplicationController
   include HTTParty
   BASE_URL = "https://api.themoviedb.org/3/movie/popular?api_key=3942737097dcd29145fe000304ac2294&language=fr-FR&region=FRA&page=1"
   before_action :set_movie,only: ['show','edit','update','destroy']
+  before_action :authenticate_user!, only: %i[create_comment]
+
 
   def updateMovies
+    updateGenres
     getMoviesFromApi(1)
     redirect_to movies_path
   end
 
   def updateGenres
     getGenresFromApi
-    redirect_to "/"
   end
 
   def index
@@ -18,6 +20,24 @@ class MoviesController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comment.user = current_user
+    @comment.movie = @movie
+
+  end
+
+  def create_comment
+    comment = Comment.new
+    comment.text = params["comment"]["text"]
+    comment.date = Date.today
+    comment.user_id = current_user.id
+    comment.movie_id = params["id"]
+    comment.save
+    redirect_to "/movies/"+params["id"].to_s+"#listCom"
+  end
+
+  def create_critical
+
   end
 
   private
@@ -40,7 +60,7 @@ class MoviesController < ApplicationController
       url = nil
       for video in result
         if(video["type"] == "Trailer" && video["site"] == "YouTube")
-          url = "https://www.youtube.com/watch?v=cxxHCa5VhQM"+video["key"]
+          url = "https://www.youtube.com/embed/"+video["key"]
         end
       end
       return url
@@ -88,6 +108,6 @@ class MoviesController < ApplicationController
     end
 
     def set_movie
-      @movie = Movie.find(params[:id])
+      @movie = Movie.includes(:comments, :criticals).find(params[:id])
     end
 end

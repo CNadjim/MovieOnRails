@@ -1,0 +1,11 @@
+.customHeader{
+  margin-bottom: -6em !important;
+  position: relative;
+  z-index: -1;
+
+  .map-header-layer{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+}

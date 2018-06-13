@@ -10,13 +10,22 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require semantic
  *= require swiper
  *= require_tree .
  *= require_self
  */
+@import "tabler/variables";
+@import "bootstrap";
+@import "tabler";
+@import "tabler.plugins";
 
-body{
+.page{
+  display: flex;
+  flex-direction: column;
+
+  .main{
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
+  }
 }

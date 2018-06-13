@@ -10,9 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
 //= require swiper
-//= require semantic
 //= require rails-ujs
 //= require turbolinks
+//= require tabler
+//= require tabler.plugins
 //= require_tree .

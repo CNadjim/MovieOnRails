@@ -3,8 +3,10 @@
 <head>
   <title>MovieOnRails</title>
   <%= csrf_meta_tags %>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   <!-- Standard Meta -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -12,14 +14,16 @@
 </head>
 
 <body>
-  <div class="page">
-    <%= render "layouts/header" %>
-    <div class="main">
-      <%= yield %>
+<div class="page">
+  <div class="page-single">
+    <div class="container">
+      <div class="row">
+        <div class="col col-login mx-auto">
+          <%= yield %>
+        </div>
+      </div>
     </div>
   </div>
+</div>
 </body>
 </html>
-
-
-
