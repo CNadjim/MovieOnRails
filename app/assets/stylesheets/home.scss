@@ -1,23 +1,225 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.swiper-slide{
-  max-width: 100%;
-}
-.body{
-  display: inherit;
-}
-.swiper-slide .vignette{
-  width: 100%;
-  height: 100%;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: block;
-  position: relative;
 
+.landing{
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.5;
+  background-color: white;
+  color: #4A4A4A;
+  -webkit-font-smoothing: antialiased;
 }
-.swiper-container{
-  width: 100%;
-  height: 60vh;
+.landing {
+  .screen{
+    position: absolute;
+    top: 6%;
+    bottom: 11%;
+    left: 14%;
+    right: 14%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: black;
+  }
+  .carousel-inner{
+    margin: auto;
+  }
+  .carousel-caption{
+    a{
+      text-decoration: none;
+    }
+  }
+}
+
+
+.landing .header {
+  padding: 1.5rem 0;
+  color: #fff;
+  background: linear-gradient(to right, #1488cc, #2b32b2);
+}
+
+.landing .welcome .header {
+  background: transparent;
+}
+
+.landing .footer {
+  border-top: 1px solid #eee;
+  padding: 2rem 0;
+  font-size: 0.875rem;
+  color: #8d96a7;
+}
+
+.landing .footer a {
+  color: #656f83;
+}
+
+.landing .logo {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: inherit;
+  transition: .3s opacity;
+}
+
+.landing .welcome {
+  text-align: center;
+  position: relative;
+  color: #fff;
+  padding-bottom: 1px;
+  margin-bottom: 8rem;
+  background: linear-gradient(to right, #1488cc, #2b32b2);
+}
+
+.landing .welcome:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(https://tabler.github.io/assets/images/waves.svg) no-repeat bottom;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.landing .welcome-title {
+  font-size: 3rem;
+  line-height: 1.1;
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+.landing .welcome-description {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+.landing .welcome-browser {
+  margin-bottom: -8rem;
+  position: relative;
+}
+
+.landing .welcome-browser svg {
+  max-width: 100%;
+  height: 1%;
+  z-index: 2;
+}
+
+
+.landing .welcome-header {
+  padding: 4rem 0 6rem;
+  position: relative;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.section-dark {
+  background: #f8f8fa;
+}
+
+.section-title {
+  text-align: center;
+  margin: 0 0 2rem;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.section-description {
+  text-align: center;
+  color: #8d96a7;
+  margin: -1.5rem auto 3rem;
+  max-width: 48rem;
+  font-size: 1.125rem;
+}
+
+.section-action {
+  background: linear-gradient(to right, #1488cc, #2b32b2);
+  color: #fff;
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.section-action .section-description {
+  color: #fff;
+}
+
+.feature {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  margin: 0 auto 4rem;
+  max-width: 40rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .feature {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    text-align: left;
+    max-width: 60rem;
+  }
+  .feature:nth-child(even) {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    flex-direction: row-reverse;
+  }
+  .feature:nth-child(even) .feature-description {
+    text-align: right;
+  }
+}
+
+.feature-description {
+  -webkit-box-flex: 1;
+  flex: 1;
+  padding: 1rem 2rem 0;
+  color: #656f83;
+}
+
+@media (min-width: 768px) {
+  .feature-description {
+    padding: 0 2rem 0;
+  }
+}
+
+.feature-image {
+  -webkit-box-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+.feature-image img {
+  max-width: 20rem;
+}
+
+@media (min-width: 768px) {
+  .feature-image img {
+    max-width: 100%;
+  }
+}
+
+.feature-name {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #4A4A4A;
 }

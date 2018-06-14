@@ -18,6 +18,8 @@
 @import "bootstrap";
 @import "tabler";
 @import "tabler.plugins";
+@import "tabler/layout";
+
 
 .page{
   display: flex;
@@ -29,3 +31,4 @@
     flex-grow: 1;
   }
 }
+
