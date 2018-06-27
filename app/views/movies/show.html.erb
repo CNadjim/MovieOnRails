@@ -70,6 +70,9 @@
                                 <div class="media-body">
                                   <div class="media-heading">
                                     <small class="float-right text-muted"><%= comment.date %></small>
+                                    <% if can? :destroy, comment%>
+                                      <button type="button" class="float-right btn btn-icon btn-primary btn-danger"><i class="fe fe-trash"></i></button>
+                                    <% end %>
                                     <h5><%= comment.user.email%></h5>
                                   </div>
                                   <div>

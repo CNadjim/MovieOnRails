@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tvshows
   resources :criticals
   devise_for :users
   get '/login' => 'users#login'

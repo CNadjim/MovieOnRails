@@ -8,11 +8,11 @@
 
       <div class="mt-6">
         <% if user_signed_in? %>
-          <%= link_to 'Voir les critiques' , criticals_path, class:"btn btn-lg btn-pill btn-success" %>
+          <%= link_to 'Voir nos films/séries' , criticals_path, class:"btn btn-lg btn-pill btn-success" %>
           <%= link_to 'Voir nos films' , movies_path, class:"btn btn-lg btn-pill btn-outline-primary " %>
         <% else %>
-          <%= link_to 'Nous rejoindre' , new_user_registration_path, class:"btn btn-lg btn-pill btn-success" %>
-          <%= link_to 'Se connecter' , new_user_session_path, class:"btn btn-lg btn-pill btn-outline-primary " %>
+          <%= link_to 'Voir nos films' , movies_path, class:"btn btn-lg btn-pill btn-success" %>
+          <%= link_to 'Nous rejoindre' , new_user_registration_path, class:"btn btn-lg btn-pill btn-outline-primary " %>
         <% end %>
       </div>
     </div>

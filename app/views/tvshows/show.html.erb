@@ -1,0 +1,172 @@
+<div class="fiche" style="background-image: url(<%= @tvshow.backdrop_path %>)">
+  <div class="ficher-overlay">
+  </div>
+  <div class="container py-6">
+    <div class="fiche-content">
+      <div class="poster d-none d-sm-block">
+        <img class="poster-image" src="<%= @tvshow.poster_path%>">
+      </div>
+      <div class="description px-5">
+        <h1 class="description-title"><%= @tvshow.name%></h1>
+        <div class="mb-4">
+          <% @tvshow.genres.each do |genre| %>
+            <span class="tag tag-rounded px-3 mr-1 mb-1"><%= genre.name%></span>
+          <% end %>
+        </div>
+        <h3>Synopsis</h3>
+        <div class="text-muted">
+          <%= @tvshow.overview%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="navDetail w-100">
+  <ul class="nav nav-tabs container" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#comment" role="tab" aria-controls="comment" aria-selected="true"><i class="fe fe-message-circle"></i> Commentaire</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#critical" role="tab" aria-controls="critical" aria-selected="false"><i class="fe fe-message-square"></i> Critique</a>
+    </li>
+  </ul>
+
+</div>
+
+
+
+
+<div class="tab-content tvshow-tab" id="myTabContent">
+
+  <div class="tab-pane fade show active" id="comment" role="tabpanel" aria-labelledby="comment-tab">
+    <div class="my-3 my-md-5">
+      <div class="container ">
+        <div class="page-header">
+          <h1 class="page-title">
+            Commentaires
+          </h1>
+          <div class="page-options d-flex">
+            <% if user_signed_in? %>
+              <a href="#submitComment" class="btn btn-pill btn-primary"><i class="fe fe-plus mr-2"></i>Ajouter un commentaire</a>
+            <% else %>
+
+              <%= link_to 'Se connecter pour ajouter un commentaire' , new_user_session_path, class:"btn btn-outline-primary mx-1" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="card">
+
+              <ul class="list-group card-list-group" id="listCom">
+                <% if @tvshow.comments.any? %>
+                  <% @tvshow.comments.each do |comment| %>
+                    <li class="list-group-item py-5">
+                      <div class="media">
+                        <div class="media-object avatar avatar-md mr-4" style="background-image: url(https://tabler.github.io/tabler/demo/faces/male/16.jpg)"></div>
+                        <div class="media-body">
+                          <div class="media-heading">
+                            <small class="float-right text-muted"><%= comment.date %></small>
+                            <% if can? :destroy, comment%>
+                              <button type="button" class="float-right btn btn-icon btn-primary btn-danger"><i class="fe fe-trash"></i></button>
+                            <% end %>
+                            <h5><%= comment.user.email%></h5>
+                          </div>
+                          <div>
+                            <%= comment.text %>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  <% end %>
+                <% else %>
+                  <li class="list-group-item py-5">
+                    <div class="media">
+                      <div class="media-body">
+                        <div>
+                          Soyez le premier à commenter !
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                <% end %>
+              </ul>
+              <% if user_signed_in? %>
+                <%= simple_form_for @comment,:url => '/movies/'+@tvshow.id.to_s+'/add_comment', :method => :post do |form|  %>
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group mb-0">
+                          <label for="text" class="form-label">Mon commentaire</label>
+                          <%= form.text_area :text,class: 'form-control',placeholder: "Here can be your description" %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer text-right">
+                    <%= form.submit 'Poster un commentaire sur ce film', class: 'btn btn-primary',id:"submitComment" %>
+                  </div>
+                <% end %>
+              <% else %>
+                <div class="card-footer">
+                  <div class="text-right">
+                    <%= link_to 'Se connecter pour poster un commentaire' , new_user_session_path, class:"btn btn-outline-primary mx-1" %>
+                  </div>
+                </div>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="critical" role="tabpanel" aria-labelledby="critical-tab">
+    <div class="my-3 my-md-5">
+      <div class="container ">
+        <div class="page-header">
+          <h1 class="page-title">
+            Critiques
+          </h1>
+          <div class="page-options d-flex">
+            <% if user_signed_in? %>
+              <a href="/criticals/new?id=<%= @tvshow.id%>" class="btn btn-pill btn-primary"><i class="fe fe-plus mr-2"></i>Ajouter une critique</a>
+            <% else %>
+              <%= link_to 'Se connecter pour ajouter une critique' , new_user_session_path, class:"btn btn-outline-primary mx-1" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <% if @tvshow.criticals.any? %>
+            <% @tvshow.criticals.each do |critical| %>
+              <div class="col-lg-4">
+                <div class="card">
+                  <div class="card-status bg-green"></div>
+                  <div class="card-body d-flex flex-column">
+                    <h4><a href="#"><%= link_to critical.title,critical, method: :get%></a></h4>
+                    <div class="text-muted"><%= critical.text%></div>
+                    <div class="d-flex align-items-center pt-5 mt-auto">
+                      <div class="avatar avatar-md mr-3" style="background-image: url(https://tabler.github.io/tabler/demo/faces/male/16.jpg)"></div>
+                      <div>
+                        <span class="text-default"><%= critical.user.email %></span>
+                        <small class="d-block text-muted"><%= critical.date %></small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="alert alert-warning" role="alert">
+              <i class="fe fe-alert-circle mr-2" aria-hidden="true"></i>Il n'y a aucune critique pour ce film
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+

@@ -3,31 +3,31 @@
   <div class="container listFilm">
     <div class="page-header">
       <h1 class="page-title">
-        Films Populaire
+        Series Populaire
       </h1>
     </div>
     <div class="row">
-      <% @movies.each do |movie| %>
+      <% @tvshows.each do |tvshow| %>
         <div class="col-md-12 col-lg-6">
 
           <div class="card card-aside">
-            <a href="/movies/<%= movie.id %>" class="card-aside-column" style="background-image: url(<%= movie.poster_path %>)">
+            <a href="/tvshows/<%= tvshow.id %>" class="card-aside-column" style="background-image: url(<%= tvshow.poster_path %>)">
 
             </a>
 
             <div class="card-content">
               <div class="card-header d-flex flex-column align-items-start">
-                <a href="/movies/<%= movie.id %>" class="card-title"><%= movie.title%></a>
-                <small class="d-block text-muted"><%= movie.release_date.strftime("%m/%d/%Y")%></small>
+                <a href="/tvshows/<%= tvshow.id %>" class="card-title"><%= tvshow.name%></a>
+                <small class="d-block text-muted"><%= tvshow.first_air_date.strftime("%m/%d/%Y")%></small>
 
               </div>
               <div class="card-body d-flex flex-column py-3">
                 <div class="text-muted">
-                  <%= movie.overview%>
+                  <%= tvshow.overview%>
                 </div>
 
               </div>
-              <a class="card-footer" href="/movies/<%= movie.id %>">
+              <a class="card-footer" href="/tvshows/<%= tvshow.id %>">
                 Plus d'informations
               </a>
             </div>
@@ -38,7 +38,7 @@
       <% end %>
     </div>
 
-    <%= paginate @movies %>
+    <%= paginate @tvshows %>
 
   </div>
 </div>
