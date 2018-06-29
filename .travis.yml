@@ -12,4 +12,8 @@ deploy:
   app: movie-on-rails-esgi
   on:
     repo: CNadjim/MovieOnRails
-  run: "rake db:drop db:create db:migrate"
+  run:
+    - "pg:reset --confirm movie-on-rails-esgi"
+    - "rake db:migrate"
+    - "rake cleanup"
+    - "rails searchkick:reindex CLASS=Listing"

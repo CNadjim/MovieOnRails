@@ -5,8 +5,27 @@
       <h1 class="page-title">
         Series Populaire
       </h1>
+      <div class="page-options d-flex">
+        <div class="form-group">
+          <%= form_tag "/tvshows", method: "post", class: "input-group" do %>
+            <input type="text" name="search" class="form-control" placeholder="Rechercher une série">
+            <span class="input-group-append">
+                  <button type="submit" class="btn btn-primary" >Go!</button>
+              </span>
+          <% end %>
+        </div>
+      </div>
     </div>
     <div class="row">
+
+      <%if @tvshows.size == 0 %>
+        <div class="col-md-12">
+          <div class="alert alert-icon alert-warning" role="alert">
+            <i class="fe fe-alert-triangle mr-2" aria-hidden="true"></i>
+            Aucun résultat pour  <%= @search %>
+          </div>
+        </div>
+      <% end %>
       <% @tvshows.each do |tvshow| %>
         <div class="col-md-12 col-lg-6">
 

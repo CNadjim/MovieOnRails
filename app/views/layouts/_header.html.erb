@@ -2,17 +2,18 @@
   <div class="container">
     <div class="d-flex">
       <a class="header-brand" href="/">
-        <img  class="header-brand-img" alt="MovieOnRails">
+        <!--<img  class="header-brand-img" alt="MovieOnRails">-->
+        MovieOnRails
       </a>
 
         <div class="d-flex order-lg-2 ml-auto">
           <% if user_signed_in? %>
             <div class="dropdown">
             <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-              <span class="avatar" style="background-image: url(https://tabler.github.io/tabler/demo/faces/male/16.jpg)"></span>
+              <span class="avatar avatar-green"><%= current_user.username[0,1]+current_user.username[current_user.username.size - 1,current_user.username.size] %></span>
               <span class="ml-2 d-none d-lg-block">
                         <span class="text-default"><%= current_user.username%></span>
-                        <small class="text-muted d-block mt-1">Administrator</small>
+                        <small class="text-muted d-block mt-1">Utilisateur</small>
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">

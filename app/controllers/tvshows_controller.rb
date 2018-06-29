@@ -5,8 +5,8 @@ class TvshowsController < ApplicationController
   # GET /tvshows
   # GET /tvshows.json
   def index
-    @tvshows = Tvshow.page(params[:page]).per(10)
-
+    @search = params[:search]
+    @tvshows= Tvshow.search(params[:search]).page(params[:page]).per(10)
   end
 
   # GET /tvshows/1

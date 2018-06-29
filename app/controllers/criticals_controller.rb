@@ -14,7 +14,8 @@ class CriticalsController < ApplicationController
 
   # GET /criticals/new
   def new
-    if !Movie.exists?(:id => params["id"])
+
+    if !(Movie.exists?(:id => params["id"]) || Tvshow.exists?(:id => params["id"]))
       redirect_to "/"
     else
       @critical = Critical.new

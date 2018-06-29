@@ -1,5 +1,18 @@
 <section class="welcome">
-
+  <header class="header">
+    <div class="container d-flex align-items-center">
+      <a href="/" class="logo">
+        <img src="/assets/logo-white.svg" alt="logo" class="logo-image"/>
+        MovieOnRails
+      </a>
+      <div class="menu ml-auto">
+        <a href="https://github.com/CNadjim/MovieOnRails">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1 feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          Github
+        </a>
+      </div>
+    </div>
+  </header>
 
   <div class="container">
     <div class="welcome-header">
@@ -7,13 +20,8 @@
       <p class="welcome-description">Découvrez, notez et partagez avec vos amis</p>
 
       <div class="mt-6">
-        <% if user_signed_in? %>
-          <%= link_to 'Voir nos films/séries' , criticals_path, class:"btn btn-lg btn-pill btn-success" %>
-          <%= link_to 'Voir nos films' , movies_path, class:"btn btn-lg btn-pill btn-outline-primary " %>
-        <% else %>
           <%= link_to 'Voir nos films' , movies_path, class:"btn btn-lg btn-pill btn-success" %>
-          <%= link_to 'Nous rejoindre' , new_user_registration_path, class:"btn btn-lg btn-pill btn-outline-primary " %>
-        <% end %>
+          <%= link_to 'Voir nos séries' , tvshows_path, class:"btn btn-lg btn-pill btn-outline-primary " %>
       </div>
     </div>
 

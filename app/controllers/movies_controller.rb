@@ -1,11 +1,12 @@
 class MoviesController < ApplicationController
   before_action :set_movie,only: ['show']
   before_action :authenticate_user!, only: %i[create_comment]
-
   authorize_resource
 
+
   def index
-    @movies = Movie.page(params[:page]).per(10)
+    @search = params[:search]
+    @movies= Movie.search(params[:search]).page(params[:page]).per(10)
   end
 
   def show
@@ -13,6 +14,8 @@ class MoviesController < ApplicationController
     @comment.user = current_user
     @comment.movie = @movie
   end
+
+
 
   def create_comment
     comment = Comment.new

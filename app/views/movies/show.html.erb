@@ -169,11 +169,7 @@
           </div>
         </div>
         <div class="tab-pane fade" id="video" role="tabpanel" aria-labelledby="video-tab">
-          <% if @movie.video.present? %>
-            <div class="lecteur">
-              <iframe width="600" height="400"  src="<%= @movie.video%>" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <% else %>
+          <div class="tab-pane fade show active" id="comment" role="tabpanel" aria-labelledby="comment-tab">
             <div class="my-3 my-md-5">
               <div class="container ">
                 <div class="page-header">
@@ -181,14 +177,35 @@
                     Video
                   </h1>
                 </div>
-                <div class="row">
-                  <div class="alert alert-warning" role="alert">
-                    <i class="fe fe-alert-circle mr-2" aria-hidden="true"></i>Il n'y a aucune video pour ce film
-                  </div>
+                <div class="row row-cards">
+
+                  <% if @movie.video.present? %>
+                    <div class="col-sm-6 col-lg-4">
+                      <div class="card p-3">
+                        <div class="mb-3">
+                          <div class="lecteur">
+                            <iframe width="600" height="400"  src="<%= @movie.video%>" frameborder="0" allowfullscreen></iframe>
+
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center px-2">
+                          <div class="avatar avatar-red avatar-md mr-3" >YT</div>
+                          <div>
+                            <div>Youtube</div>
+                            <small class="d-block text-muted">12 days ago</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% else %>
+                    <div class="alert alert-warning" role="alert">
+                      <i class="fe fe-alert-circle mr-2" aria-hidden="true"></i>Il n'y a aucune video pour ce film
+                    </div>
+                  <% end %>
                 </div>
               </div>
             </div>
-          <% end %>
+          </div>
         </div>
 
 

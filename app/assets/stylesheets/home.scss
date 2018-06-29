@@ -10,6 +10,27 @@
   background-color: white;
   color: #4A4A4A;
   -webkit-font-smoothing: antialiased;
+  a{
+    text-decoration: none !important;
+  }
+  .menu{
+    display: -webkit-box;
+    display: flex;
+    font-weight: 500;
+    font-size: 0.875rem;
+  }
+  .menu svg {
+    width: 18px;
+    height: 18px;
+  }
+  .menu a {
+    color: inherit;
+    margin-left: 1.5rem;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+  }
 }
 .landing {
   .screen{
@@ -38,6 +59,7 @@
   padding: 1.5rem 0;
   color: #fff;
   background: linear-gradient(to right, #1488cc, #2b32b2);
+  border-bottom: none;
 }
 
 .landing .welcome .header {
@@ -223,3 +245,9 @@
   font-weight: 500;
   color: #4A4A4A;
 }
+.logo-image{
+  width: 2rem;
+  height: 2rem;
+  margin-right: .75rem;
+}
+
