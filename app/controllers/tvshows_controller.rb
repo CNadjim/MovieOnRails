@@ -32,5 +32,4 @@ class TvshowsController < ApplicationController
     def set_tvshow
       @tvshow = Tvshow.includes(:comments, :criticals).find(params[:id])
     end
-
 end

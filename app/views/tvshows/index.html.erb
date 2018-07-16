@@ -7,7 +7,7 @@
       </h1>
       <div class="page-options d-flex">
         <div class="form-group">
-          <%= form_tag "/tvshows", method: "post", class: "input-group" do %>
+          <%= form_tag tvshows_path, method: "post", class: "input-group" do %>
             <input type="text" name="search" class="form-control" placeholder="Rechercher une série">
             <span class="input-group-append">
                   <button type="submit" class="btn btn-primary" >Go!</button>

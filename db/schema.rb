@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180627075516) do
+ActiveRecord::Schema.define(version: 20180708132452) do
 
   create_table "comments", force: :cascade do |t|
     t.string "text"
@@ -69,6 +69,16 @@ ActiveRecord::Schema.define(version: 20180627075516) do
     t.integer "vote_average"
     t.text "overview"
     t.index ["title"], name: "index_movies_on_title", unique: true
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer "movie_id"
+    t.integer "user_id"
+    t.integer "score", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_ratings_on_movie_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|

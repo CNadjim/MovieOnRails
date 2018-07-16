@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require tabler
 //= require tabler.plugins
+//= require raty

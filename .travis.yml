@@ -13,7 +13,7 @@ deploy:
   on:
     repo: CNadjim/MovieOnRails
   run:
-    - "pg:reset --confirm movie-on-rails-esgi"
+    - "heroku pg:reset --confirm movie-on-rails-esgi"
     - "rake db:migrate"
     - "rake cleanup"
-    - "rails searchkick:reindex CLASS=Listing"
+    - "rake assets:precompile"

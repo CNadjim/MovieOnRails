@@ -66,14 +66,16 @@
                           <% @movie.comments.each do |comment| %>
                             <li class="list-group-item py-5">
                               <div class="media">
-                                <div class="media-object avatar avatar-md mr-4" style="background-image: url(https://tabler.github.io/tabler/demo/faces/male/16.jpg)"></div>
+                                <div class="mr-4" >
+                                  <span class="avatar avatar-md avatar-green"><%= current_user.username[0,1]+current_user.username[current_user.username.size - 1,current_user.username.size] %></span>
+                                </div>
                                 <div class="media-body">
                                   <div class="media-heading">
                                     <small class="float-right text-muted"><%= comment.date %></small>
                                     <% if can? :destroy, comment%>
                                       <button type="button" class="float-right btn btn-icon btn-primary btn-danger"><i class="fe fe-trash"></i></button>
                                     <% end %>
-                                    <h5><%= comment.user.email%></h5>
+                                    <h5><%= comment.user.username%></h5>
                                   </div>
                                   <div>
                                     <%= comment.text %>
@@ -95,7 +97,8 @@
                         <% end %>
                       </ul>
                       <% if user_signed_in? %>
-                        <%= simple_form_for @comment,:url => '/movies/'+@movie.id.to_s+'/add_comment', :method => :post do |form|  %>
+                        <%= simple_form_for @comment,:url => '/comments/movies/'+@movie.id.to_s, :method => :post do |form|  %>
+                          <%= form.hidden_field :movie_id, id: :comment_movie_id %>
                           <div class="card-footer">
                             <div class="row">
                               <div class="col-md-12">
@@ -133,7 +136,7 @@
                 </h1>
                 <div class="page-options d-flex">
                   <% if user_signed_in? %>
-                      <a href="/criticals/new?id=<%= @movie.id%>" class="btn btn-pill btn-primary"><i class="fe fe-plus mr-2"></i>Ajouter une critique</a>
+                      <a href="/criticals/movies/new/<%= @movie.id%>" class="btn btn-pill btn-primary"><i class="fe fe-plus mr-2"></i>Ajouter une critique</a>
                     <% else %>
                     <%= link_to 'Se connecter pour ajouter une critique' , new_user_session_path, class:"btn btn-outline-primary mx-1" %>
                   <% end %>
@@ -146,12 +149,14 @@
                       <div class="card">
                         <div class="card-status bg-green"></div>
                         <div class="card-body d-flex flex-column">
-                          <h4><a href="#"><%= link_to critical.title,critical, method: :get%></a></h4>
+                          <h4><a href="/criticals/<%= critical.id %>"><%= critical.title%></a></h4>
                           <div class="text-muted"><%= critical.text%></div>
                           <div class="d-flex align-items-center pt-5 mt-auto">
-                            <div class="avatar avatar-md mr-3" style="background-image: url(https://tabler.github.io/tabler/demo/faces/male/16.jpg)"></div>
+                            <div class="mr-2">
+                              <span class="avatar avatar-green"><%= current_user.username[0,1]+current_user.username[current_user.username.size - 1,current_user.username.size] %></span>
+                            </div>
                             <div>
-                              <span class="text-default"><%= critical.user.email %></span>
+                              <span class="text-default"><%= critical.user.username %></span>
                               <small class="d-block text-muted"><%= critical.date %></small>
                             </div>
                           </div>

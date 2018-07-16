@@ -1,5 +1,5 @@
 class Critical < ApplicationRecord
-  belongs_to :user
-  belongs_to :movie
-  belongs_to :tvshow
+  belongs_to :user, required: true
+  belongs_to :movie, required: false
+  belongs_to :tvshow, required: false
 end

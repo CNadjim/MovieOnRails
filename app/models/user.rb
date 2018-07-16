@@ -6,5 +6,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :comments, dependent: :destroy
   has_many :criticals, dependent: :destroy
+  has_many :ratings, dependent: :destroy
   validates :username, presence:true, uniqueness: true
 end

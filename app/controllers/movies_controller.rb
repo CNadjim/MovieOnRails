@@ -16,7 +16,6 @@ class MoviesController < ApplicationController
   end
 
 
-
   def create_comment
     comment = Comment.new
     comment.text = params["comment"]["text"]
