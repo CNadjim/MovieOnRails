@@ -15,21 +15,39 @@ class TvshowsController < ApplicationController
     @comment = Comment.new
     @comment.user = current_user
     @comment.tvshow = @tvshow
+
+    if (current_user != nil)
+      @rating = Rating.find_by(user_id: current_user.id, tvshow_id: @tvshow.id)
+
+      if @rating == nil
+        @rating = Rating.new
+        @rating.score = 0
+      end
+    end
+
+
+    @total = @tvshow.ratings.length
+    @moyenne = 0
+    @pourcentage = 0
+
+    for rate in @tvshow.ratings
+      @moyenne += rate.score
+    end
+
+    if @total > 0
+      @moyenne = @moyenne/@total
+      @pourcentage = @moyenne / 5.0 * 100.0
+    else
+      @moyenne = 0
+      @pourcentage = 0
+    end
+
   end
 
-  def create_comment
-    comment = Comment.new
-    comment.text = params["comment"]["text"]
-    comment.date = Date.today
-    comment.user_id = current_user.id
-    comment.tvshow_id = params["id"]
-    comment.save
-    redirect_to "/tvshows/"+params["id"].to_s+"#listCom"
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tvshow
-      @tvshow = Tvshow.includes(:comments, :criticals).find(params[:id])
+      @tvshow = Tvshow.includes(:comments, :criticals, :ratings).find(params[:id])
     end
 end

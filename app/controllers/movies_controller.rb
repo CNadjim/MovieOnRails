@@ -13,21 +13,39 @@ class MoviesController < ApplicationController
     @comment = Comment.new
     @comment.user = current_user
     @comment.movie = @movie
+
+    if (current_user != nil)
+      @rating = Rating.find_by(user_id: current_user.id, movie_id: @movie.id)
+
+      if @rating == nil
+        @rating = Rating.new
+        @rating.score = 0
+      end
+    end
+
+
+    @total = @movie.ratings.length
+    @moyenne = 0
+    @pourcentage = 0
+
+    for rate in @movie.ratings
+      @moyenne += rate.score
+    end
+
+    if @total > 0
+      @moyenne = @moyenne/@total
+      @pourcentage = @moyenne / 5.0 * 100.0
+    else
+      @moyenne = 0
+      @pourcentage = 0
+    end
+
   end
 
 
-  def create_comment
-    comment = Comment.new
-    comment.text = params["comment"]["text"]
-    comment.date = Date.today
-    comment.user_id = current_user.id
-    comment.movie_id = params["id"]
-    comment.save
-    redirect_to "/movies/"+params["id"].to_s+"#listCom"
-  end
 
   private
     def set_movie
-      @movie = Movie.includes(:comments, :criticals).find(params[:id])
+      @movie = Movie.includes(:comments, :criticals, :ratings).find(params[:id])
     end
 end

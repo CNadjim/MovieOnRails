@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   get  '/criticals/movies/new/:id' => 'criticals#new_movies_critical'
   get  '/criticals/tvshows/new/:id' => 'criticals#new_tvshows_critical'
   get  '/criticals/:id' => 'criticals#show'
+  patch  '/ratings' => 'ratings#update'
   resources :movies
   resources :tvshows
-  resources :ratings, only: :update
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180708132452) do
+ActiveRecord::Schema.define(version: 20180717204411) do
 
   create_table "comments", force: :cascade do |t|
     t.string "text"
@@ -77,7 +77,9 @@ ActiveRecord::Schema.define(version: 20180708132452) do
     t.integer "score", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "tvshow_id"
     t.index ["movie_id"], name: "index_ratings_on_movie_id"
+    t.index ["tvshow_id"], name: "index_ratings_on_tvshow_id"
     t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 

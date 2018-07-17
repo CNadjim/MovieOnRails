@@ -13,6 +13,17 @@
           <span class="tag tag-rounded px-3 mr-1 mb-1"><%= genre.name%></span>
           <% end %>
         </div>
+        <div class="row my-4">
+          <div class="col-md-6 d-flex">
+            <div id="chart"></div>
+          </div>
+
+          <% if user_signed_in? %>
+            <div class="col-md-6 d-flex">
+              <div id="star-rating"></div>
+            </div>
+          <% end%>
+        </div>
         <h3>Synopsis</h3>
         <div class="text-muted">
           <%= @movie.overview%>
@@ -216,4 +227,73 @@
 
 </div>
 
+<% if user_signed_in? %>
+  <script>
+      $('#star-rating').raty({
+          score: <%= @rating.score %>,
+          path: '/assets/',
+          scoreName: 'review[rating]',
+          click: function(score, evt) {
+              $.ajax({
+                  url: '/ratings',
+                  type: 'PATCH',
+                  data: {
+                      rating : {
+                        score: score,
+                        movie_id: <%= @movie.id %>
+                      }
+                  }
+              }).done(function (data){
+                  location.reload();
+              });
+          }
+      });
+  </script>
+<% end %>
+<script>
+    var chart = c3.generate({
+        data: {
+            columns: [
+                [ 'score', 0 ]
+            ],
+            type: 'gauge'
+        },
+        gauge: {
+            label: {
+//            format: function(value, ratio) {
+//              return value;
+//            },
+//            extents: function (value, isMax) {
+//                return value + '%';
+//            },
+//          show: false // to turn off the min/max labels.
+            },
+//          min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
+//          max: 100, // 100 is default
+//          units: ' %',
+//          width: 39 // for adjusting arc thickness
+        },
+        color: {
+            pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
+            threshold: {
+//            unit: 'value', // percentage is default
+//            max: 200, // 100 is default
+                values: [30, 60, 90, 100]
+            }
+        },
+        size: {
+            height: 100,
+            width: 180
+        }
+    });
+    var cycleDemo = function () {
+        setTimeout(function () {
+            chart.load({
+                columns: [[ 'score', <%= @pourcentage %> ]]
+            });
+        }, 1000);
+    }
+    cycleDemo();
+    //      setInterval(cycleDemo, 30000);
+</script>
 

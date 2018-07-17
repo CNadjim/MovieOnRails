@@ -1,4 +1,5 @@
 class Rating < ApplicationRecord
-  belongs_to :movie
-  belongs_to :user
+  belongs_to :movie, required: false
+  belongs_to :tvshow, required: false
+  belongs_to :user, required: true
 end
