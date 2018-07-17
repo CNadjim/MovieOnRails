@@ -64,7 +64,7 @@
                     <li class="list-group-item py-5">
                       <div class="media">
                         <div class="mr-4" >
-                          <span class="avatar avatar-md avatar-green"><%= current_user.username[0,1]+current_user.username[current_user.username.size - 1,current_user.username.size] %></span>
+                          <span class="avatar avatar-md avatar-green"><%= comment.user.username[0,1]+comment.user.username[comment.user.username.size - 1,comment.user.username.size] %></span>
                         </div>
                         <div class="media-body">
                           <div class="media-heading">
@@ -150,7 +150,7 @@
                     <div class="text-muted"><%= critical.text%></div>
                     <div class="d-flex align-items-center pt-5 mt-auto">
                       <div class="mr-4" >
-                        <span class="avatar avatar-md avatar-green"><%= current_user.username[0,1]+current_user.username[current_user.username.size - 1,current_user.username.size] %></span>
+                        <span class="avatar avatar-green"><%= critical.user.username[0,1]+critical.user.username[critical.user.username.size - 1,critical.user.username.size] %></span>
                       </div>
                       <div>
                         <span class="text-default"><%= critical.user.username %></span>
